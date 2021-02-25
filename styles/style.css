@@ -1,0 +1,29 @@
+
+html, body, p{
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  font-size: calc(0.7rem + 0.7vw);
+  line-height: calc(1.1rem + 0.5vw);
+}
+
+header {
+  flex: 0 0 auto;
+  font-size: calc(0.8rem + 1vw);
+  text-align: center;
+}
+
+.container {
+  display: flex;
+}
+
+.square {
+  flex: 1;
+  width: 50vw;
+  height: 50vw;
+}
