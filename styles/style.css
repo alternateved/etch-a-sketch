@@ -14,16 +14,41 @@ body {
 
 header {
   flex: 0 0 auto;
-  font-size: calc(0.8rem + 1vw);
+  font-size: 4vmin;
   text-align: center;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  outline: 3px solid black;
+  height: 80%;
 }
 
 .container {
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 100px;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
 }
 
 .square {
-  flex: 1;
-  width: 50vw;
-  height: 50vw;
+  flex-shrink: 0;
+  height: 0.4vh;
+  width: 0.4vh;
+  border: 1px black solid;
+}
+
+footer {
+  flex: 0 0 auto;
+  font-size: calc(0.6rem + 0.5vw);
+  text-align: center;
+  padding: 1rem;
+  border: 1px solid black;
 }
