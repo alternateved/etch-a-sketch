@@ -1,54 +1,51 @@
-
-html, body, p{
-  margin: 0;
-  padding: 0;
-  height: 100%;
-}
-
 body {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-areas:
+    "header header header"
+    "aside main ."
+    "footer footer footer";
+  grid-template-rows: 60px 1fr 40px;
+  grid-template-columns: 20% 1fr 15%;
+  grid-gap: 10px 10px;
+  align-items: center;
+  justify-items: center;
+  height: 100vh;
+  margin: 0;
   font-size: calc(0.7rem + 0.7vw);
   line-height: calc(1.1rem + 0.5vw);
 }
 
 header {
-  flex: 0 0 auto;
-  font-size: 4vmin;
-  text-align: center;
+  grid-area: header;
+}
+
+aside {
+  grid-area: aside;
 }
 
 main {
-  display: flex;
-  flex-direction: column;
-  outline: 3px solid black;
-  height: 80%;
-}
-
-.container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding-top: 100px;
-}
-
-.row {
-  display: flex;
-  flex-direction: row;
-}
-
-.square {
-  flex-shrink: 0;
-  height: 0.4vh;
-  width: 0.4vh;
-  border: 1px black solid;
+  grid-area: main;
+  display: grid;
+  grid-template-columns: repeat(16, 1fr);
+  grid-template-rows: repeat(16, 1fr);
+  outline: 2px solid black;
 }
 
 footer {
-  flex: 0 0 auto;
+  grid-area: footer;
   font-size: calc(0.6rem + 0.5vw);
-  text-align: center;
-  padding: 1rem;
-  border: 1px solid black;
+}
+
+/* Stack the layout on small devices/viewports. */
+@media all and (max-width: 575px) {
+  body {
+    grid-template-areas:
+      "header"
+      "aside"
+      "main"
+      "main"
+      "footer";
+    grid-template-rows: 60px 100px 1fr 1fr 40px;
+    grid-template-columns: 1fr;
+  }
 }
