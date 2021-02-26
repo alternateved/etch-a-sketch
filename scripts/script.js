@@ -1,9 +1,15 @@
 const gridContainer = document.querySelector(".container");
 const clearButton = document.querySelector("#clear");
+const sizeButton = document.querySelector("#size");
 
-let size = 24;
+let size = 16;
 
 function generateGrid(size) {
+  gridContainer.style[
+    `grid-template-columns`
+  ] = `repeat(${size}, minmax(0,1fr))`;
+  gridContainer.style[`grid-template-rows`] = `repeat(${size}, minmax(0,1fr))`;
+
   for (let i = 0; i < size * size; i++) {
     let square = document.createElement("div");
     square.classList.add("square");
@@ -21,13 +27,25 @@ function colorGrid() {
 
 function clearGrid(size) {
   for (let i = 0; i < size * size; i++) {
-    gridContainer.removeChild(gridContainer.lastElementChild);
+    if (gridContainer.lastElementChild === null) {
+      break;
+    } else {
+      gridContainer.removeChild(gridContainer.lastElementChild);
+    }
   }
   generateGrid(size);
   colorGrid();
 }
 
-clearButton.addEventListener("click", () => clearGrid(size));
+function mainGrid() {
+  sizeButton.addEventListener("click", () => {
+    let answer = Number(prompt("HOW BIG...?!!!"));
+    clearGrid(answer);
+  });
 
-generateGrid(24);
-colorGrid();
+  clearButton.addEventListener("click", () => clearGrid(size));
+  generateGrid(size);
+  colorGrid();
+}
+
+mainGrid();
