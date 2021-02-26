@@ -1,11 +1,16 @@
+html {
+  padding: 0;
+  margin: 0;
+}
+
 body {
   display: grid;
   grid-template-areas:
-    "header header header"
-    "aside main ."
-    "footer footer footer";
-  grid-template-rows: 60px 1fr 40px;
-  grid-template-columns: 20% 1fr 15%;
+    "header header header header"
+    ". aside main ."
+    "footer footer footer footer";
+  grid-template-rows: 60px 1fr 60px;
+  grid-template-columns: 10% 10% 1fr 20%;
   grid-gap: 10px 10px;
   align-items: center;
   justify-items: center;
@@ -25,10 +30,21 @@ aside {
 
 main {
   grid-area: main;
+}
+
+.container {
+  box-sizing: border-box;
+  width: 45vw;
+  height: 45vw;
   display: grid;
-  grid-template-columns: repeat(16, 1fr);
-  grid-template-rows: repeat(16, 1fr);
-  outline: 2px solid black;
+  grid-template-columns: repeat(16, minmax(0,1fr));
+  grid-template-rows: repeat(16, minmax(0,1fr));
+  
+  padding: 5vw;
+}
+
+.square {
+  border: 0.5px solid black;
 }
 
 footer {
@@ -41,11 +57,17 @@ footer {
   body {
     grid-template-areas:
       "header"
+      "main"
       "aside"
-      "main"
-      "main"
       "footer";
-    grid-template-rows: 60px 100px 1fr 1fr 40px;
+    grid-template-rows: 60px 1fr 100px 40px;
     grid-template-columns: 1fr;
+    grid-gap: 5vw 5vw;
+  }
+
+  .container {
+    width: 70vw;
+    height: 70vw;
+    padding: 0;
   }
 }
