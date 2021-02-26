@@ -16,5 +16,9 @@ function colorGrid() {
   );
 }
 
-generateGrid(64);
+function clearGrid() {
+  gridContainer.childNodes.forEach((square) => square.classList.add("clear"));
+}
+
+generateGrid(24);
 colorGrid();
