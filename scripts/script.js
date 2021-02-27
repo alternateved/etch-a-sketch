@@ -119,15 +119,15 @@ function toggleColors() {
       if (current.length > 0) {
         current[0].className = current[0].className.replace(" active", "");
       }
-      
+
       switch (event.target.getAttribute("id")) {
-        case "ink-button":
+        case "ink":
           colorGridBlack();
           break;
-        case "rainbow-button":
+        case "rainbow":
           colorGridRainbow();
           break;
-        case "eraser-button":
+        case "eraser":
           colorGridWhite();
           break;
       }
