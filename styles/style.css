@@ -49,6 +49,10 @@ main {
   background-color: black;
 }
 
+.slider {
+  outline: none;
+}
+
 .clear {
   background-color: white;
 }

@@ -1,8 +1,7 @@
 const gridContainer = document.querySelector(".container");
 const clearButton = document.querySelector("#clear");
-const sizeButton = document.querySelector("#size");
-
-let size = 16;
+const sizeSlider = document.querySelector("#size-slider");
+const sizeValue = document.querySelector("#size-value");
 
 function generateGrid(size) {
   gridContainer.style[
@@ -26,25 +25,29 @@ function colorGrid() {
 }
 
 function clearGrid(size) {
-  for (let i = 0; i < size * size; i++) {
-    if (gridContainer.lastElementChild === null) {
-      break;
-    } else {
-      gridContainer.removeChild(gridContainer.lastElementChild);
-    }
+  while (gridContainer.childElementCount > 0) {
+    gridContainer.removeChild(gridContainer.firstElementChild);
   }
   generateGrid(size);
   colorGrid();
 }
 
-function mainGrid() {
-  sizeButton.addEventListener("click", () => {
-    let answer = Number(prompt("HOW BIG...?!!!"));
-    clearGrid(answer);
-  });
+function changeSize() {
+  sizeValue.textContent = sizeSlider.value;
 
-  clearButton.addEventListener("click", () => clearGrid(size));
-  generateGrid(size);
+  sizeSlider.addEventListener("input", (event) => {
+    sizeValue.textContent = event.target.value;
+  });
+  sizeSlider.addEventListener("change", (event) => {
+    clearGrid(event.target.value);
+  });
+}
+
+function mainGrid() {
+  sizeSlider.value = 16;
+  generateGrid(sizeSlider.value);
+  changeSize();
+  clearButton.addEventListener("click", () => clearGrid(sizeSlider.value));
   colorGrid();
 }
 
