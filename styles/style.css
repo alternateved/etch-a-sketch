@@ -26,6 +26,7 @@ header {
 
 aside {
   grid-area: aside;
+  box-sizing: border-box;
 }
 
 main {
@@ -45,16 +46,8 @@ main {
   border: 0.1px solid black;
 }
 
-.ink {
-  background-color: black;
-}
-
 .slider {
   outline: none;
-}
-
-.clear {
-  background-color: white;
 }
 
 footer {

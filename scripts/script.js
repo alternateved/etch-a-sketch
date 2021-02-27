@@ -16,10 +16,10 @@ function generateGrid(size) {
   }
 }
 
-function colorGrid() {
+function colorGridBlack() {
   gridContainer.childNodes.forEach((square) => {
     square.addEventListener("mouseover", (event) => {
-      event.target.classList.add("ink");
+      event.target.style.backgroundColor = "black";
     });
   });
 }
@@ -29,7 +29,7 @@ function clearGrid(size) {
     gridContainer.removeChild(gridContainer.firstElementChild);
   }
   generateGrid(size);
-  colorGrid();
+  colorGridBlack();
 }
 
 function changeSize() {
@@ -48,7 +48,7 @@ function mainGrid() {
   generateGrid(sizeSlider.value);
   changeSize();
   clearButton.addEventListener("click", () => clearGrid(sizeSlider.value));
-  colorGrid();
+  colorGridBlack();
 }
 
 mainGrid();
