@@ -3,6 +3,56 @@ const clearButton = document.querySelector("#clear");
 const sizeSlider = document.querySelector("#size-slider");
 const sizeValue = document.querySelector("#size-value");
 
+function randomNumber() {
+  return Math.floor(Math.random() * Math.floor(100));
+}
+
+function generateRainbow() {
+  let r, g, b;
+  let h = randomNumber() / randomNumber();
+  let i = ~~(h * 6);
+  let f = h * 6 - i;
+  let q = 1 - f;
+  switch (i % 6) {
+    case 0:
+      r = 1;
+      g = f;
+      b = 0;
+      break;
+    case 1:
+      r = q;
+      g = 1;
+      b = 0;
+      break;
+    case 2:
+      r = 0;
+      g = 1;
+      b = f;
+      break;
+    case 3:
+      r = 0;
+      g = q;
+      b = 1;
+      break;
+    case 4:
+      r = f;
+      g = 0;
+      b = 1;
+      break;
+    case 5:
+      r = 1;
+      g = 0;
+      b = q;
+      break;
+  }
+  let color =
+    "#" +
+    ("00" + (~~(r * 255)).toString(16)).slice(-2) +
+    ("00" + (~~(g * 255)).toString(16)).slice(-2) +
+    ("00" + (~~(b * 255)).toString(16)).slice(-2);
+  return color;
+}
+
 function generateGrid(size) {
   gridContainer.style[
     `grid-template-columns`
@@ -24,12 +74,22 @@ function colorGridBlack() {
   });
 }
 
+function colorGridRainbow() {
+  let color = "";
+  gridContainer.childNodes.forEach((square) => {
+    square.addEventListener("mouseover", (event) => {
+      color = generateRainbow();
+      event.target.style.backgroundColor = color;
+    });
+  });
+}
+
 function clearGrid(size) {
   while (gridContainer.childElementCount > 0) {
     gridContainer.removeChild(gridContainer.firstElementChild);
   }
   generateGrid(size);
-  colorGridBlack();
+  colorGridRainbow();
 }
 
 function changeSize() {
@@ -47,8 +107,9 @@ function mainGrid() {
   sizeSlider.value = 16;
   generateGrid(sizeSlider.value);
   changeSize();
+
   clearButton.addEventListener("click", () => clearGrid(sizeSlider.value));
-  colorGridBlack();
+  colorGridRainbow();
 }
 
 mainGrid();
