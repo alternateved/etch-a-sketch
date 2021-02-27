@@ -1,12 +1,13 @@
 @font-face {
   font-family: "CabinSketchBold";
-  src: url("/fonts/CabinSketch-Bold.otf");
+  src: url("../etch-a-sketch/fonts/CabinSketch-Bold.otf");
   font-weight: bold;
 }
 
 @font-face {
   font-family: "DrawveticaMini";
-  src: url("/fonts/DrawveticaMini.ttf");
+  src: url("../etch-a-sketch/fonts/DrawveticaMini.ttf");
+  font-style: normal;
 }
 
 html {
