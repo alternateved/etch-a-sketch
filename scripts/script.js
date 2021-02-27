@@ -1,7 +1,8 @@
 const gridContainer = document.querySelector(".container");
-const clearButton = document.querySelector("#clear");
+const clearButton = document.querySelector("#clear-button");
 const sizeSlider = document.querySelector("#size-slider");
 const sizeValue = document.querySelector("#size-value");
+const toggleButtons = document.querySelectorAll(".toggle-buttons");
 
 function randomNumber() {
   return Math.floor(Math.random() * Math.floor(100));
@@ -84,6 +85,14 @@ function colorGridRainbow() {
   });
 }
 
+function colorGridWhite() {
+  gridContainer.childNodes.forEach((square) => {
+    square.addEventListener("mouseover", (event) => {
+      event.target.style.backgroundColor = "white";
+    });
+  });
+}
+
 function clearGrid(size) {
   while (gridContainer.childElementCount > 0) {
     gridContainer.removeChild(gridContainer.firstElementChild);
@@ -103,13 +112,37 @@ function changeSize() {
   });
 }
 
+function toggleColors() {
+  toggleButtons.forEach((button) =>
+    button.addEventListener("click", (event) => {
+      let current = document.getElementsByClassName("active");
+      if (current.length > 0) {
+        current[0].className = current[0].className.replace(" active", "");
+      }
+      
+      switch (event.target.getAttribute("id")) {
+        case "ink-button":
+          colorGridBlack();
+          break;
+        case "rainbow-button":
+          colorGridRainbow();
+          break;
+        case "eraser-button":
+          colorGridWhite();
+          break;
+      }
+      event.target.className += " active";
+    })
+  );
+}
+
 function mainGrid() {
   sizeSlider.value = 16;
   generateGrid(sizeSlider.value);
   changeSize();
-
+  colorGridBlack();
+  toggleColors();
   clearButton.addEventListener("click", () => clearGrid(sizeSlider.value));
-  colorGridRainbow();
 }
 
 mainGrid();

@@ -27,6 +27,8 @@ header {
 aside {
   grid-area: aside;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
 }
 
 main {
@@ -50,6 +52,30 @@ main {
   outline: none;
 }
 
+#clear-button {
+  border: none;
+  outline: none;
+  padding: 10px 16px;
+  background-color: #f1f1f1;
+}
+
+.togglers {
+  display: flex;
+  border: 1px inset darkslategrey;
+}
+
+.toggle-buttons {
+  border: none;
+  outline: none;
+  padding: 10px 16px;
+  background-color: #f1f1f1;
+}
+
+.active, .toggle-buttons:hover {
+  background-color: #666;
+  color: white;
+}
+
 footer {
   grid-area: footer;
   font-size: calc(0.6rem + 0.5vw);
@@ -63,7 +89,7 @@ footer {
       "main"
       "aside"
       "footer";
-    grid-template-rows: 60px 1fr 100px 40px;
+    grid-template-rows: 60px 1fr 300px 40px;
     grid-template-columns: 1fr;
     grid-gap: 5vw 5vw;
   }
