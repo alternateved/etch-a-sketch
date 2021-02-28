@@ -98,7 +98,7 @@ function clearGrid(size) {
     gridContainer.removeChild(gridContainer.firstElementChild);
   }
   generateGrid(size);
-  colorGridRainbow();
+  colorGridBlack();
 }
 
 function changeSize() {
