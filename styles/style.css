@@ -167,7 +167,7 @@ footer a {
       "main"
       "aside"
       "footer";
-    grid-template-rows: 60px 1fr 300px 40px;
+    grid-template-rows: 60px 1fr 200px 40px;
     grid-template-columns: 1fr;
     grid-gap: 5vw 5vw;
   }
